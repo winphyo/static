@@ -4,7 +4,8 @@ pipeline {
         stage('Upload to AWS') {
             steps {
                 sh 'echo "Upload to AWS"'
-		
+		        sh 'tidy -q -e *.html'
+                sh 'echo "Tidy Done"'
             withAWS(region:'us-east-1',credentials:'aws-static') 
                 {
                 //s3Upload(bucket: 's3jenkin-winphyo', file:'index.html');
